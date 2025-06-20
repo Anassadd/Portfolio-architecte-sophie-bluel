@@ -125,6 +125,38 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+/* Le conteneur des boutons de filtres */
+#filters {
+  display: flex; /* Affiche les boutons en ligne */
+  justify-content: center; /* Centre les boutons horizontalement */
+  gap: 10px; /* Espace de 10px entre chaque bouton */
+  margin-bottom: 30px; /* Espace en dessous du groupe de boutons */
+}
+
+/* Style de base pour tous les boutons */
+#filters button {
+  font-family: 'Syne'; /* Utilise la police Syne */
+  font-weight: 700; /* Met le texte en gras */
+  font-size: 16px; /* Taille du texte */
+  color: #1D6154; /* Couleur du texte */
+  border: 1px solid #1D6154; /* Bordure de couleur vert foncé */
+  background-color: white; /* Fond blanc */
+  border-radius: 25px; /* Coins bien arrondis */
+  padding: 10px 20px; /* Espace à l’intérieur du bouton (haut/bas : 10px, gauche/droite : 20px) */
+  cursor: pointer; /* Curseur change en main au survol */
+  transition: all 0.3s ease; /* Animation douce lors d’un changement (hover/active) */
+}
+
+/* Style au survol ou quand le bouton est actif (sélectionné) */
+#filters button:hover,
+#filters button.active {
+  background-color: #1D6154; /* Fond vert foncé */
+  color: white; /* Texte blanc */
+}
+
+
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -185,4 +217,6 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
+
+
 

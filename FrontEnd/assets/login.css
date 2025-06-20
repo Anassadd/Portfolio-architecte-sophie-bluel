@@ -1,0 +1,100 @@
+
+body {
+  font-family: sans-serif;
+  background-color: #f9f9f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Syne';
+    font-size: 22px;
+    font-weight: 800;
+    color: #B1663C;
+}
+
+.logo span {
+    font-family: 'Work Sans';
+    font-size: 10px;
+    letter-spacing: 0.1em;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav a.active {
+  font-weight: bold;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+h2 {
+  margin-bottom: 30px;
+  color: #2d6150; /* couleur verte de ton bouton */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+form label {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+form input {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #2d6150;
+  color: white;
+  border: none;
+  border-radius: 20px;
+    width: 173px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+
+button:hover {
+  background-color: #244d40;
+}
+
+.forgot {
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 0.8em;
+}
