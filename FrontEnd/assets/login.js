@@ -5,7 +5,7 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value;
 
   const errorMsg = document.getElementById('login-error');
-  errorMsg.style.display = 'none';  // Masquer l'erreur avant de tester
+  errorMsg.style.display = 'none';
 
   try {
     const response = await fetch('http://localhost:5678/api/users/login', {
@@ -16,11 +16,15 @@ document.getElementById('login-form').addEventListener('submit', async (e) => {
       body: JSON.stringify({ email, password })
     });
 
+    const data = await response.json(); // parse la réponse ici, même si le status est 401
+
     if (response.ok) {
-      const data = await response.json();
+      console.log('Connexion réussie :', data); // Debug
       localStorage.setItem('token', data.token);
       window.location.href = 'index.html';
     } else {
+      console.log('Échec de la connexion :', data);
+      errorMsg.textContent = 'E-mail ou mot de passe incorrect.';
       errorMsg.style.display = 'block';
     }
   } catch (error) {

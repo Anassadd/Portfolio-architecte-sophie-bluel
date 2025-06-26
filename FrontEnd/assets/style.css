@@ -58,6 +58,162 @@ header {
 	justify-content: space-between;
 	margin: 50px 0
 }
+
+/*log in et log out */
+#login-link {
+  color: black;
+  text-decoration: none;
+}
+
+#login-link:hover {
+  color: black; /* Même au survol il reste noir */
+  text-decoration: none;
+}
+
+
+/* Bande noire mode édition */
+#edit-bar {
+  display: none;
+  background: black;
+  color: white;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Pour éviter que le header soit caché sous la bande noire */
+header {
+  margin-top: 40px;
+}
+
+/* Bouton modifier */
+#edit-button {
+  display: none;
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+#edit-button i {
+  margin-right: 5px;
+}
+
+/* affichage de la modal */
+/* === Base modale === */
+
+.hidden {
+  display: none;
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  z-index: 1001;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 90%;
+}
+
+.modal-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+
+}
+
+#modal-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+}
+
+.img-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.img-container img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  background-color: black;
+  padding: 4px;
+  border-radius: 15%;
+}
+
+#modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  padding: 20px;
+  background-color: white;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.close-button.left {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.add-button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  background-color: #1D6154;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+
+
+
+
 section {
 	margin: 50px 0
 }
@@ -132,6 +288,13 @@ li:hover {
   justify-content: center; /* Centre les boutons horizontalement */
   gap: 10px; /* Espace de 10px entre chaque bouton */
   margin-bottom: 30px; /* Espace en dessous du groupe de boutons */
+}
+
+
+#filters button.active {
+  background-color: #1D6154;
+  color: white;
+  border: none;
 }
 
 /* Style de base pour tous les boutons */

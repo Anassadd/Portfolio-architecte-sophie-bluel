@@ -28,10 +28,22 @@ header {
     letter-spacing: 0.1em;
 }
 
+nav {
+    font-family: 'Syne';
+    display: flex;
+    align-items: center;
+}
+
+nav img {
+    padding: 0 25px;
+    width: 25px;
+}
+
 nav a {
   margin-left: 20px;
   text-decoration: none;
   color: #333;
+  padding: 0 12px;
 }
 
 nav a.active {
@@ -48,6 +60,7 @@ main {
 h2 {
   margin-bottom: 30px;
   color: #2d6150; /* couleur verte de ton bouton */
+  font-family: 'Syne';
 }
 
 form {
@@ -74,10 +87,10 @@ button {
   color: white;
   border: none;
   border-radius: 20px;
-    width: 173px;
-    cursor: pointer;
-    display: block;
-    margin: auto;
+  width: 180px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
 }
 
 button:hover {
@@ -87,14 +100,15 @@ button:hover {
 .forgot {
   font-size: 0.8em;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 25px;
   color: #333;
-  text-decoration: none;
 }
 
-footer {
+footer a {
   position: absolute;
   bottom: 10px;
   right: 20px;
   font-size: 0.8em;
+  text-decoration: none;
+  color: #333;
 }

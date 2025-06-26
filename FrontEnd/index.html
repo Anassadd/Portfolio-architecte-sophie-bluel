@@ -8,16 +8,21 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
+	<div id="edit-bar">
+  <i class="fa-solid fa-pen-to-square"></i> Mode édition
+    </div>
+
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li><a href="login.html" id="login-link">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -35,9 +40,9 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<h2>Mes Projets <span id="edit-button"><i class="fa-solid fa-pen-to-square"></i> modifier</span></h2>
 		 <div id="filters">
-    		<button data-id="0">Tous</button>
+    		<button class="active" data-id="0">Tous</button>
     		<button data-id="1">Objets</button>
     		<button data-id="2">Appartements</button>
     		<button data-id="3">Hotels & restaurants</button>
@@ -67,6 +72,20 @@
 		</ul>
 	</nav>
 </footer>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <button id="close-modal" class="close-button left">&times;</button>
+    <h2 class="modal-title">Galerie photo</h2>
+    <div id="modal-gallery" class="gallery-grid"></div>
+    <hr class="separator" />
+    <button id="add-photo" class="add-button">Ajouter une photo</button>
+  </div>
+</div>
+
+<div id="modal-overlay" class="overlay hidden"></div>
+
+<div id="modal-overlay" class="hidden"></div>
 <script src="./assets/main.js"></script>
 </body>
 </html>
