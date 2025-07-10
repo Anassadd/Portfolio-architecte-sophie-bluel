@@ -197,15 +197,14 @@ if (backToGalleryBtn) {
 
 
 
-  // Fermer modale galerie (croix ou overlay)
+// Fermer modale galerie (croix ou overlay)
   if (closeModalBtn) {
     closeModalBtn.addEventListener("click", closeAllModals);
   }
 
-  if (overlay) {
-  overlay.addEventListener("click", closeAllModals);
-}
-
+  if (overlayGallery) {
+    overlayGallery.addEventListener("click", closeAllModals);
+  }
 });
 
 

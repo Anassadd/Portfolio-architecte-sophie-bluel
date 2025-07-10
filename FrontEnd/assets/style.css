@@ -219,7 +219,6 @@ header {
 
 
 /* Deuxième modale (Ajout photo) */
-/* Style général du formulaire */
 /* Overlay */
 .overlay {
   position: fixed;
@@ -235,19 +234,18 @@ header {
   display: none;
 }
 
-/* Modale */
+/* Modale 2*/
 .modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 30px;
-  border-radius: 10px;
+  z-index: 1001;
+  padding: 20px;
   max-width: 600px;
-  width: 90%;
-  z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  width: 630px;
+  height: 688px;
 }
 
 .modal-content {
@@ -273,10 +271,12 @@ header {
 
 .arrow-button {
   left: 15px;
+  font-size: 25px;
 }
 
 .close-button {
   right: 15px;
+  font-size: 25px;
 }
 
 /* Formulaire */
@@ -294,15 +294,16 @@ header {
   border-radius: 5px;
 }
 
+.upload-box i.fa-solid.fa-image {
+  font-size: 48px;       /* Taille, ajuste selon besoin */
+  color: #CBD6DC;        /* Couleur bleue, change la valeur couleur */
+  margin-bottom: 10px;
+}
+
 .upload-box {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.upload-icon {
-  width: 60px;
-  margin-bottom: 10px;
 }
 
 .upload-label {
@@ -329,14 +330,19 @@ header {
 
 /* Bouton Valider */
 .submit-button {
-  padding: 15px;
-  background-color: #a7a7a7;
-  color: white;
-  font-size: 18px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: background 0.3s;
+      background-color: #a7a7a7;
+  display: block;
+    margin: 30px auto 0;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 237px;
+    height: 36px;
+    font-family: "Syne";
+    font-size: 14px;
+    margin-top: 60px;
 }
 
 .submit-button:hover {
@@ -349,10 +355,8 @@ header {
 }
 
 /* Séparateur */
-.separator {
-  border: none;
-  height: 1px;
-  background-color: #ddd;
+.separator2 {
+  width: 420px;
 }
 
 
