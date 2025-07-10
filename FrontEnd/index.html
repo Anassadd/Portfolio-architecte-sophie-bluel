@@ -84,24 +84,35 @@
 </div>
 <div id="modal-overlay" class="overlay hidden"></div>
 
-<!-- Modale Ajout Photo -->
 <div id="modal-add" class="modal hidden">
-  <button id="back-to-gallery">&larr;</button>
-  <button id="close-modal-add">&times;</button>
-  <h2>Ajout photo</h2>
+  <div class="modal-content">
+    <button id="back-to-gallery" class="arrow-button">&larr;</button>
+    <button id="close-modal-add" class="close-button">&times;</button>
 
-  <form id="add-form">
-    <input type="file" id="image" name="image" accept="image/*" required />
-    <input type="text" id="title" name="title" placeholder="Titre" required />
-    <select id="category" name="category" required>
-      <option value="">-- Catégorie --</option>
-      <option value="1">Objets</option>
-      <option value="2">Appartements</option>
-      <option value="3">Hôtels & Restaurants</option>
-    </select>
-    <button type="submit">Valider</button>
-  </form>
-</div>
+    <h2 class="modal-title">Ajout photo</h2>
+
+    <form id="add-form" class="form-content">
+      <div class="upload-container">
+        <div class="upload-box">
+          <img src="./assets/icons/picture-svgrepo-com.svg" alt="icon" class="upload-icon" />
+          <label for="image" class="upload-label">+ Ajouter photo</label>
+          <p class="upload-info">jpg, png : 4mo max</p>
+        </div>
+        <input type="file" id="image" name="image" accept="image/*" required class="hidden-input"/>
+      </div>
+
+      <input type="text" id="title" name="title" placeholder="Titre" class="input-field" required />
+
+      <select id="category" name="category" class="input-field" required>
+        <option value="">-- Catégorie --</option>
+        <option value="1">Objets</option>
+        <option value="2">Appartements</option>
+        <option value="3">Hôtels & Restaurants</option>
+      </select>
+
+      <hr class="separator"/>
+
+      <button type="submit" class="submit-button">Valider</button>
 
 <div id="modal-overlay-add" class="overlay hidden"></div>
 

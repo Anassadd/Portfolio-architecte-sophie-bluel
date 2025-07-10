@@ -220,90 +220,141 @@ header {
 
 /* Deuxième modale (Ajout photo) */
 /* Style général du formulaire */
-#modal-add {
+/* Overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Modale */
+.modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  z-index: 1001;
-  padding: 20px;
-  max-width: 600px;
-  width: 630px;
-  height: 688px;
+  padding: 30px;
   border-radius: 10px;
-  box-sizing: border-box;
+  max-width: 600px;
+  width: 90%;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#modal-add .modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.modal-content {
+  position: relative;
 }
 
-#modal-add .back-button,
-#modal-add .close-button {
+.modal-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+/* Boutons de fermeture */
+.arrow-button,
+.close-button {
+  position: absolute;
+  top: 15px;
+  font-size: 20px;
   background: none;
   border: none;
-  font-size: 24px;
   cursor: pointer;
-  color: #333;
 }
 
-#modal-add .modal-title {
-  font-size: 24px;
-  margin-bottom: 55px;
-  text-align: center;
-  font-family: "Work Sans";
-  color: #000;
-  font-weight: 400;
+.arrow-button {
+  left: 15px;
 }
 
-#modal-add form {
+.close-button {
+  right: 15px;
+}
+
+/* Formulaire */
+.form-content {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 0 70px; /* identique à .modal-content */
-  box-sizing: border-box;
+  gap: 20px;
 }
 
-#modal-add input[type="file"],
-#modal-add input[type="text"],
-#modal-add select {
-  padding: 10px;
-  font-size: 16px;
+/* Zone d'upload */
+.upload-container {
+  background-color: #e8f1f6;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.upload-icon {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.upload-label {
+  background-color: #cbd6dc;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.upload-info {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* Champs texte et select */
+.input-field {
+  padding: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
+  font-size: 16px;
 }
 
-#modal-add .add-button {
-  background-color: #1D6154;
+/* Bouton Valider */
+.submit-button {
+  padding: 15px;
+  background-color: #a7a7a7;
   color: white;
-  font-size: 14px;
-  padding: 10px 20px;
-  border-radius: 20px;
-  cursor: pointer;
+  font-size: 18px;
   border: none;
-  margin: 60px auto 0;
-  width: 237px;
-  height: 36px;
-  font-family: "Syne";
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-#modal-add .add-button:hover {
-  background-color: #218838;
+.submit-button:hover {
+  background-color: #999;
 }
 
-#modal-overlay-add {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0,0,0,0.5);
-  width: 100vw;
-  height: 100vh;
-  z-index: 1000;
+/* Input invisible (upload) */
+.hidden-input {
+  display: none;
 }
+
+/* Séparateur */
+.separator {
+  border: none;
+  height: 1px;
+  background-color: #ddd;
+}
+
 
 
 
