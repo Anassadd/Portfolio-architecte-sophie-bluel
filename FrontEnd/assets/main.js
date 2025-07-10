@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalGallery = document.getElementById("modal-gallery");
   const loginLink = document.getElementById("login-link");
 
+  // Éléments pour la modale d'ajout photo
   const modalAdd = document.getElementById("modal-add");
   const overlayAdd = document.getElementById("modal-overlay-add");
   const openAddModalBtn = document.getElementById("add-photo");
@@ -74,14 +75,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 6. Ouvrir la modale principale
-  if (editButton) {
-    editButton.addEventListener("click", () => {
-      modal.classList.remove("hidden");
-      overlay.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-      displayModalGallery();
-    });
-  }
+if (editButton) {
+  editButton.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+    displayModalGallery();
+  });
+}
 
   // 7. Fermer la modale principale
   function closeModal() {
@@ -150,47 +151,61 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Ouvrir modale d'ajout photo
-  if (openAddModalBtn) {
-    openAddModalBtn.addEventListener("click", () => {
-      modalGallery.classList.add("hidden");
-      overlayGallery.classList.add("hidden");
+  // Fonction pour ouvrir la modale d'ajout photo
+if (openAddModalBtn) {
+  openAddModalBtn.addEventListener("click", () => {
+    // Fermer la première modale
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden");
 
-      modalAdd.classList.remove("hidden");
-      overlayAdd.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-    });
-  }
+    // Ouvrir la deuxième modale (ajout photo)
+    modalAdd.classList.remove("hidden");
+    overlayAdd.classList.remove("hidden");
 
-  // Fermer modale ajout photo (croix ou overlay)
-  if (closeAddModalBtn) {
-    closeAddModalBtn.addEventListener("click", closeAllModals);
-  }
+    document.body.style.overflow = "hidden";
+  });
+}
 
-  if (overlayAdd) {
-    overlayAdd.addEventListener("click", closeAllModals);
-  }
+// Fermer la modale d'ajout photo
+if (closeAddModalBtn) {
+  closeAddModalBtn.addEventListener("click", () => {
+    modalAdd.classList.add("hidden");
+    overlayAdd.classList.add("hidden");
+    document.body.style.overflow = "";
+  });
+}
 
-  // Revenir à la galerie depuis ajout photo
-  if (backToGalleryBtn) {
-    backToGalleryBtn.addEventListener("click", () => {
-      modalAdd.classList.add("hidden");
-      overlayAdd.classList.add("hidden");
+if (overlayAdd) {
+  overlayAdd.addEventListener("click", () => {
+    modalAdd.classList.add("hidden");
+    overlayAdd.classList.add("hidden");
+    document.body.style.overflow = "";
+  });
+}
 
-      modalGallery.classList.remove("hidden");
-      overlayGallery.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-    });
-  }
+// Revenir à la galerie (modale 1)
+if (backToGalleryBtn) {
+  backToGalleryBtn.addEventListener("click", () => {
+    modalAdd.classList.add("hidden");
+    overlayAdd.classList.add("hidden");
+
+    modal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  });
+}
+
+
 
   // Fermer modale galerie (croix ou overlay)
   if (closeModalBtn) {
     closeModalBtn.addEventListener("click", closeAllModals);
   }
 
-  if (overlayGallery) {
-    overlayGallery.addEventListener("click", closeAllModals);
-  }
+  if (overlay) {
+  overlay.addEventListener("click", closeAllModals);
+}
+
 });
 
 
