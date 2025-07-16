@@ -98,24 +98,30 @@
         <div class="upload-box">
           <i class="fa-solid fa-image"></i>
           <label for="image" class="upload-label">+ Ajouter photo</label>
+          <input type="file" id="image" name="image" accept="image/jpeg, image/png" class="hidden-input" required />
           <p class="upload-info">jpg, png : 4mo max</p>
         </div>
-        <input type="file" id="image" name="image" accept="image/*" required class="hidden-input"/>
+        <img id="image-preview" src="#" alt="Aperçu de l'image" style="display: none;" />
       </div>
 
-      <input type="text" id="title" name="title" placeholder="Titre" class="input-field" required />
+      <div class="form-group">
+        <label for="title" class="field-label">Titre</label>
+        <input type="text" id="title" name="title" class="input-field" required />
+      </div>
 
-      <select id="category" name="category" class="input-field" required>
-        <option value="">-- Catégorie --</option>
-        <option value="1">Objets</option>
-        <option value="2">Appartements</option>
-        <option value="3">Hôtels & Restaurants</option>
-      </select>
+      <div class="form-group">
+        <label for="category" class="field-label">Catégorie</label>
+        <select id="category" name="category" class="input-field" required>
+          <option value="" disabled selected hidden>-- Sélectionnez une catégorie --</option>
+        </select>
+      </div>
 
       <hr class="separator2"/>
 
-      <button type="submit" class="submit-button">Valider</button>
-
+      <button type="submit" id="validate-btn" class="submit-button">Valider</button>
+    </form>
+  </div>
+</div>
 
 
 

@@ -122,6 +122,7 @@ header {
   max-width: 600px;
   width: 630px;
   height: 688px;
+  z-index: 1001;
 }
 
 .modal-title {
@@ -176,7 +177,7 @@ header {
 
 .modal-content {
   position: relative;
-  padding: 50px 70px;
+  padding: 50px 82px;
   background-color: white;
   max-width: 800px;
   margin: auto;
@@ -219,146 +220,246 @@ header {
 
 
 /* Deuxième modale (Ajout photo) */
-/* Overlay */
-.overlay {
+/* ================================== */
+/* STYLE DE LA MODALE D'AJOUT DE PHOTO */
+/* ================================== */
+
+/* La modale principale */
+#modal-add {
+  position: fixed; /* Reste en place quand on scroll */
+  top: 50%;       /* Positionné à 50% du haut */
+  left: 50%;      /* Positionné à 50% de la gauche */
+  transform: translate(-50%, -50%); /* Centre parfaitement la modale */
+  background: white; /* Fond blanc */
+  z-index: 1002;   /* Au-dessus des autres éléments */
+  width: 600px;    /* Largeur fixe */
+  max-width: 90%;  /* Mais ne dépasse pas 90% de l'écran sur mobile */
+  max-height: 90vh;/* Hauteur max de 90% de l'écran */
+  overflow-y: auto; /* Scroll si contenu trop long */
+  border-radius: 10px; /* Coins arrondis */
+  padding: 30px;   /* Espace intérieur */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+/* Fond sombre derrière la modale */
+#modal-overlay-add {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  width: 100vw;   /* Prend toute la largeur de l'écran */
+  height: 100vh;  /* Prend toute la hauteur de l'écran */
+  background: rgba(0, 0, 0, 0.5); /* Noir semi-transparent */
+  z-index: 1001;  /* Juste en dessous de la modale */
 }
 
-.hidden {
-  display: none;
-}
-
-/* Modale 2*/
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  z-index: 1001;
-  padding: 20px;
-  max-width: 600px;
-  width: 630px;
-  height: 688px;
-}
-
+/* Contenu de la modale */
 .modal-content {
-  position: relative;
+  position: relative; /* Pour positionner les boutons absolument */
 }
 
+/* Titre de la modale */
 .modal-title {
-  text-align: center;
-  font-size: 24px;
-  margin: 20px 0;
+  text-align: center; /* Centré */
+  font-size: 24px;    /* Taille du texte */
+  margin: 20px 0 30px; /* Espacement autour */
+  color: #333;        /* Couleur de texte */
+  font-weight: 500;   /* Epaisseur du texte */
 }
 
-/* Boutons de fermeture */
+/* ================= */
+/* BOUTONS DE CONTROLE */
+/* ================= */
+
+/* Style de base pour les boutons (croix et flèche) */
 .arrow-button,
 .close-button {
-  position: absolute;
-  top: 15px;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
+  position: absolute; /* Position fixe dans la modale */
+  top: 15px;          /* A 15px du haut */
+  font-size: 20px;    /* Taille de l'icône */
+  background: none;   /* Pas de fond */
+  border: none;       /* Pas de bordure */
+  cursor: pointer;    /* Curseur en main */
+  color: #333;        /* Couleur de l'icône */
 }
 
+/* Position spécifique de la flèche */
 .arrow-button {
-  left: 15px;
-  font-size: 25px;
+  left: 15px;        /* A 15px de la gauche */
+  font-size: 25px;   /* Un peu plus gros */
 }
 
+/* Position spécifique de la croix */
 .close-button {
-  right: 15px;
-  font-size: 25px;
+  right: 15px;       /* A 15px de la droite */
+  font-size: 25px;   /* Un peu plus gros */
 }
 
-/* Formulaire */
-.form-content {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+/* =============== */
+/* ZONE D'UPLOAD */
+/* =============== */
 
-/* Zone d'upload */
 .upload-container {
-  background-color: #e8f1f6;
-  padding: 20px;
-  text-align: center;
-  border-radius: 5px;
+  background-color: #e8f1f6; /* Fond bleu très clair */
+  padding: 8px;             /* Espace intérieur */
+  text-align: center;        /* Texte centré */
+  border-radius: 3px;        /* Coins arrondis */
+  height: 180px;            /* Hauteur fixe */
+  display: flex;            /* Disposition flexible */
+  flex-direction: column;   /* Eléments en colonne */
+  justify-content: center;  /* Centré verticalement */
+  margin-bottom: 50px;      /* Espace en dessous */
+
 }
 
+
+/* Icône d'image */
 .upload-box i.fa-solid.fa-image {
-  font-size: 48px;       /* Taille, ajuste selon besoin */
-  color: #CBD6DC;        /* Couleur bleue, change la valeur couleur */
-  margin-bottom: 10px;
+  font-size: 65px;       /* Taille de l'icône */
+  color: #b9c5cc;        /* Couleur bleu-gris */
+  margin-bottom: 10px;   /* Espace en dessous */
+  height: 59px;
 }
 
+/* Conteneur de la zone d'upload */
 .upload-box {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Cache complètement l'input file natif */
+.hidden-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Bouton "Ajouter photo" */
 .upload-label {
-  background-color: #cbd6dc;
-  padding: 10px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: #cbd6dc; /* Fond gris-bleu */
+  color: #306685;           /* Texte bleu foncé */
+  padding: 10px 20px;       /* Espace intérieur */
+  border-radius: 30px;      /* Coins très arrondis */
+  cursor: pointer;          /* Curseur en main */
+  font-weight: bold;        /* Texte en gras */
+  font-size: 14px;         /* Taille du texte */
+  transition: all 0.3s;    /* Animation douce */
 }
 
+.upload-label:hover {
+  background-color: #b9c5cc; /* Changement de couleur au survol */
+}
+
+/* Texte d'info sous le bouton */
 .upload-info {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #666;
+  margin-top: 10px;      /* Espace au-dessus */
+  font-size: 12px;       /* Texte plus petit */
+  color: #666;           /* Couleur grise */
 }
 
-/* Champs texte et select */
+/* ================ */
+/* CHAMPS DU FORMULAIRE */
+/* ================ */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;             /* Espace entre label et input */
+  margin-bottom: 20px;  /* Espace entre chaque groupe */
+}
+
+/* Style des labels */
+.field-label {
+  font-size: 14px;
+  font-weight: 600;     /* Texte semi-gras */
+  color: #3d3d3d;
+}
+
+/* Style des champs de saisie */
 .input-field {
   padding: 15px;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
+  width: 100%; /* Prend toute la largeur disponible */
+  box-sizing: border-box;
 }
 
-/* Bouton Valider */
+.input-field:focus {
+  border-color: #1d6154; /* Bordure verte quand on clique */
+  outline: none;        /* Enlève le contour par défaut */
+}
+
+/* ============= */
+/* BOUTON VALIDER */
+/* ============= */
+
 .submit-button {
-      background-color: #a7a7a7;
-  display: block;
-    margin: 30px auto 0;
-    padding: 10px 20px;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    width: 237px;
-    height: 36px;
-    font-family: "Syne";
-    font-size: 14px;
-    margin-top: 60px;
+  background-color: #a7a7a7; /* Gris par défaut */
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px 0;
+  width: 100%;          /* Pleine largeur */
+  font-family: "Syne";
+  font-size: 14px;
+  font-weight: bold;
+  cursor: not-allowed;  /* Curseur interdit (inactif par défaut) */
+  margin-top: 30px;
+  transition: all 0.3s; /* Animation douce */
+}
+
+/* Quand le formulaire est valide */
+.submit-button.active {
+  background-color: #1d6154; /* Vert */
+  cursor: pointer;          /* Curseur en main */
 }
 
 .submit-button:hover {
-  background-color: #999;
+  background-color: #999;   /* Gris plus foncé au survol */
 }
 
-/* Input invisible (upload) */
-.hidden-input {
-  display: none;
+.submit-button.active:hover {
+  background-color: #218838; /* Vert plus clair au survol */
 }
+
+/* ================== */
+/* ELEMENTS SUPPLEMENTAIRES */
+/* ================== */
 
 /* Séparateur */
 .separator2 {
-  width: 420px;
+   margin-top: 40px;
 }
 
+/* Preview de l'image (sera affichée via JS) */
+#image-preview {
+  max-width: 100%;
+  max-height: 100%;  /* Prend toute la hauteur disponible */
+  display: none;
+  object-fit: contain; /* Garde les proportions */
+  margin: 0 auto;     /* Centre l'image */
+}
+.upload-container.has-image {
+  background: none;
+  border: 1px dashed #B9C5CC;
+}
+
+.upload-container.has-image .upload-box {
+  display: none;
+}
+
+/* Quand image chargée */
+.upload-container.has-image #image-preview {
+  display: block;
+  height: 100%;       /* Prend toute la hauteur */
+}
 
 
 
