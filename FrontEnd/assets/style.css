@@ -175,7 +175,7 @@ header {
   z-index: 1000;
 }
 
-.modal-content {
+#modal .modal-content {
   position: relative;
   padding: 50px 82px;
   background-color: white;
@@ -220,9 +220,8 @@ header {
 
 
 /* Deuxième modale (Ajout photo) */
-/* ================================== */
 /* STYLE DE LA MODALE D'AJOUT DE PHOTO */
-/* ================================== */
+
 
 /* La modale principale */
 #modal-add {
@@ -230,14 +229,14 @@ header {
   top: 50%;       /* Positionné à 50% du haut */
   left: 50%;      /* Positionné à 50% de la gauche */
   transform: translate(-50%, -50%); /* Centre parfaitement la modale */
-  background: white; /* Fond blanc */
+  background: white;
   z-index: 1002;   /* Au-dessus des autres éléments */
   width: 600px;    /* Largeur fixe */
-  max-width: 90%;  /* Mais ne dépasse pas 90% de l'écran sur mobile */
-  max-height: 90vh;/* Hauteur max de 90% de l'écran */
+  max-width: 90%;  
+  max-height: 90vh;
   overflow-y: auto; /* Scroll si contenu trop long */
-  border-radius: 10px; /* Coins arrondis */
-  padding: 30px;   /* Espace intérieur */
+  border-radius: 10px; 
+  padding: 30px;  
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre légère */
 }
 
@@ -253,61 +252,62 @@ header {
 }
 
 /* Contenu de la modale */
-.modal-content {
+#modal-add .modal-content {
   position: relative; /* Pour positionner les boutons absolument */
+  padding: 48px 82px;
+  background-color: white;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 8px;
 }
 
 /* Titre de la modale */
 .modal-title {
-  text-align: center; /* Centré */
-  font-size: 24px;    /* Taille du texte */
+  text-align: center; 
+  font-size: 24px;    
   margin: 20px 0 30px; /* Espacement autour */
-  color: #333;        /* Couleur de texte */
-  font-weight: 500;   /* Epaisseur du texte */
+  color: #333;        
+  font-weight: 500;   
 }
 
-/* ================= */
 /* BOUTONS DE CONTROLE */
-/* ================= */
 
 /* Style de base pour les boutons (croix et flèche) */
 .arrow-button,
 .close-button {
   position: absolute; /* Position fixe dans la modale */
-  top: 15px;          /* A 15px du haut */
-  font-size: 20px;    /* Taille de l'icône */
+  top: 15px;         
+  font-size: 20px;    
   background: none;   /* Pas de fond */
   border: none;       /* Pas de bordure */
-  cursor: pointer;    /* Curseur en main */
+  cursor: pointer;    
   color: #333;        /* Couleur de l'icône */
 }
 
 /* Position spécifique de la flèche */
 .arrow-button {
-  left: 15px;        /* A 15px de la gauche */
-  font-size: 25px;   /* Un peu plus gros */
+  left: 15px;        
+  font-size: 25px;   
 }
 
 /* Position spécifique de la croix */
 .close-button {
-  right: 15px;       /* A 15px de la droite */
-  font-size: 25px;   /* Un peu plus gros */
+  right: 15px;       
+  font-size: 25px;   
 }
 
-/* =============== */
 /* ZONE D'UPLOAD */
-/* =============== */
 
 .upload-container {
-  background-color: #e8f1f6; /* Fond bleu très clair */
-  padding: 8px;             /* Espace intérieur */
-  text-align: center;        /* Texte centré */
+  background-color: #e8f1f6; 
+  padding: 8px;             
+  text-align: center;        
   border-radius: 3px;        /* Coins arrondis */
-  height: 180px;            /* Hauteur fixe */
+  height: 180px;            
   display: flex;            /* Disposition flexible */
   flex-direction: column;   /* Eléments en colonne */
   justify-content: center;  /* Centré verticalement */
-  margin-bottom: 50px;      /* Espace en dessous */
+  margin-bottom: 50px;      
 
 }
 
@@ -315,7 +315,7 @@ header {
 /* Icône d'image */
 .upload-box i.fa-solid.fa-image {
   font-size: 65px;       /* Taille de l'icône */
-  color: #b9c5cc;        /* Couleur bleu-gris */
+  color: #b9c5cc;        
   margin-bottom: 10px;   /* Espace en dessous */
   height: 59px;
 }
@@ -342,13 +342,13 @@ header {
 
 /* Bouton "Ajouter photo" */
 .upload-label {
-  background-color: #cbd6dc; /* Fond gris-bleu */
-  color: #306685;           /* Texte bleu foncé */
+  background-color: #cbd6dc; 
+  color: #306685;           
   padding: 10px 20px;       /* Espace intérieur */
   border-radius: 30px;      /* Coins très arrondis */
-  cursor: pointer;          /* Curseur en main */
-  font-weight: bold;        /* Texte en gras */
-  font-size: 14px;         /* Taille du texte */
+  cursor: pointer;          
+  font-weight: bold;      
+  font-size: 14px;        
   transition: all 0.3s;    /* Animation douce */
 }
 
@@ -358,14 +358,12 @@ header {
 
 /* Texte d'info sous le bouton */
 .upload-info {
-  margin-top: 10px;      /* Espace au-dessus */
-  font-size: 12px;       /* Texte plus petit */
-  color: #666;           /* Couleur grise */
+  margin-top: 10px;    
+  font-size: 12px;      
+  color: #666;         
 }
 
-/* ================ */
 /* CHAMPS DU FORMULAIRE */
-/* ================ */
 
 .form-group {
   display: flex;
@@ -377,7 +375,7 @@ header {
 /* Style des labels */
 .field-label {
   font-size: 14px;
-  font-weight: 600;     /* Texte semi-gras */
+  font-weight: 600;    
   color: #3d3d3d;
 }
 
@@ -396,9 +394,8 @@ header {
   outline: none;        /* Enlève le contour par défaut */
 }
 
-/* ============= */
 /* BOUTON VALIDER */
-/* ============= */
+
 
 .submit-button {
   background-color: #a7a7a7; /* Gris par défaut */
@@ -429,26 +426,23 @@ header {
   background-color: #218838; /* Vert plus clair au survol */
 }
 
-/* ================== */
-/* ELEMENTS SUPPLEMENTAIRES */
-/* ================== */
-
 /* Séparateur */
 .separator2 {
    margin-top: 40px;
 }
 
-/* Preview de l'image (sera affichée via JS) */
+/* Preview de l'image */
 #image-preview {
   max-width: 100%;
-  max-height: 100%;  /* Prend toute la hauteur disponible */
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
   display: none;
-  object-fit: contain; /* Garde les proportions */
-  margin: 0 auto;     /* Centre l'image */
 }
 .upload-container.has-image {
   background: none;
-  border: 1px dashed #B9C5CC;
+  padding: 0;
 }
 
 .upload-container.has-image .upload-box {
@@ -458,7 +452,8 @@ header {
 /* Quand image chargée */
 .upload-container.has-image #image-preview {
   display: block;
-  height: 100%;       /* Prend toute la hauteur */
+  max-height: 100%;
+  background: #E8F1F6;
 }
 
 

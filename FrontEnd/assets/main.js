@@ -1,8 +1,8 @@
 // Quand la page est complètement chargée
 document.addEventListener("DOMContentLoaded", () => {
-  // ==================================
+  
   // PARTIE 1 : INITIALISATION
-  // ==================================
+
   let works = []; // Stocke tous les projets
   
   // Elements de la 1ère modale (galerie)
@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeAddModalBtn = document.getElementById("close-modal-add"); // Bouton de fermeture
   const backToGalleryBtn = document.getElementById("back-to-gallery"); // Bouton retour
 
-  // ==================================
+ 
   // PARTIE 2 : GALERIE PRINCIPALE
-  // ==================================
+  
   
   // Charge les projets depuis l'API
   fetch("http://localhost:5678/api/works")
@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ==================================
+  
   // PARTIE 3 : FILTRES
-  // ==================================
+  
   const filterButtons = document.querySelectorAll("#filters button");
   filterButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -67,9 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ==================================
+  
   // PARTIE 4 : MODE ADMIN
-  // ==================================
+ 
   const token = localStorage.getItem("token");
   const loginLink = document.getElementById("login-link");
 
@@ -88,9 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("filters").style.display = "none"; // Cache les filtres
   }
 
-  // ==================================
+ 
   // PARTIE 5 : 1ère MODALE (GALERIE)
-  // ==================================
+ 
   
   // Ouvre la modale
   if (editButton) editButton.addEventListener("click", () => {
@@ -154,9 +154,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(error => console.error("Erreur:", error));
   }
 
-  // ==================================
+
   // PARTIE 6 : 2ème MODALE (AJOUT PHOTO)
-  // ==================================
+ 
   const categorySelect = document.getElementById("category");
   const imageInput = document.getElementById("image");
   const titleInput = document.getElementById("title");
@@ -199,6 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const reader = new FileReader();
       reader.onload = function(e) {
         imagePreview.src = e.target.result; // Affiche l'aperçu
+        imagePreview.style.display = "block"; //pour afficher
         document.querySelector(".upload-container").classList.add("has-image");
         };
       reader.readAsDataURL(file);
@@ -214,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
       categorySelect.value !== "" // Catégorie choisie
     );
     validateBtn.disabled = !formComplete; // Active/désactive le bouton Valider
+    validateBtn.classList.toggle('active', formComplete); // Active/désactive le bouton Valider
   }
 
   // Écoute les modifications du formulaire
@@ -232,6 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function closeAddModal() {
     modalAdd.classList.add("hidden");
     overlayAdd.classList.add("hidden");
+    overlay.classList.add("hidden");
     document.body.style.overflow = "";
   }
 
@@ -245,6 +248,92 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.remove("hidden"); // Réaffiche 1ère modale
     overlay.classList.remove("hidden");
   });
+
+  // Soumission du formulaire (Ajout Photo)
+const addForm = document.getElementById("add-form");
+if (addForm) {
+  addForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Vous devez être connecté pour ajouter une photo.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("image", imageInput.files[0]);
+    formData.append("title", titleInput.value.trim());
+    formData.append("category", categorySelect.value);
+
+    try {
+      const response = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
+        body: formData
+      });
+
+      if (!response.ok) {
+        alert("Erreur lors de l'ajout de la photo.");
+        return;
+      }
+
+      const newWork = await response.json();
+
+      // Ajoute le nouveau projet à la galerie principale
+      addWorkToMainGallery(newWork);
+
+      // Ajoute le nouveau projet à la galerie de la modale
+      addWorkToModalGallery(newWork);
+
+      // Ferme la modale + réinitialise le formulaire
+      closeAddModal();
+      resetForm();
+
+    } catch (error) {
+      console.error("Erreur:", error);
+    }
+  });
+}
+
+// Fonction pour ajouter un work dans la galerie principale
+function addWorkToMainGallery(work) {
+  const gallery = document.querySelector(".gallery");
+  if (!gallery) return;
+
+  const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
+  const img = document.createElement("img");
+  img.src = work.imageUrl;
+  img.alt = work.title;
+
+  const figcaption = document.createElement("figcaption");
+  figcaption.textContent = work.title;
+
+  figure.appendChild(img);
+  figure.appendChild(figcaption);
+  gallery.appendChild(figure);
+}
+
+// Fonction pour ajouter un work dans la modale
+function addWorkToModalGallery(work) {
+  const modalGallery = document.querySelector(".modal-gallery");
+  if (!modalGallery) return;
+
+  const figure = document.createElement("figure");
+  figure.dataset.id = work.id;
+
+  const img = document.createElement("img");
+  img.src = work.imageUrl;
+  img.alt = work.title;
+
+  figure.appendChild(img);
+  modalGallery.appendChild(figure);
+}
+
 });
 
 
