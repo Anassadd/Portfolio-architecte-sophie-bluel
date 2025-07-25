@@ -50,22 +50,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
-  // PARTIE 3 : FILTRES
-  
-  const filterButtons = document.querySelectorAll("#filters button");
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      // Active/désactive les boutons
-      filterButtons.forEach(btn => btn.classList.remove("active"));
-      button.classList.add("active");
-      
-      // Filtre les projets
-      const categoryId = parseInt(button.dataset.id);
-      const filteredWorks = categoryId === 0 ? works : works.filter(work => work.category.id === categoryId);
-      displayGallery(filteredWorks);
+  // PARTIE 3 : FILTRES DYNAMIQUES
+
+// On récupère les catégories depuis l'API
+fetch("http://localhost:5678/api/categories")
+  .then(response => response.json()) // Convertit la réponse en JSON
+  .then(categories => {
+    // Sélectionne le conteneur des filtres (dans le HTML)
+    const filtersContainer = document.getElementById("filters");
+
+    // Crée un bouton pour chaque catégorie récupérée de l'API
+    categories.forEach(cat => {
+      const button = document.createElement("button");
+      button.textContent = cat.name;      // Nom de la catégorie
+      button.dataset.id = cat.id;         // ID de la catégorie
+      filtersContainer.appendChild(button); // Ajoute le bouton au conteneur
     });
-  });
+
+    //  Ajoute un événement sur chaque bouton pour filtrer la galerie
+    const filterButtons = document.querySelectorAll("#filters button");
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        // Enlève la classe "active" sur tous les boutons
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+
+        // Ajoute la classe "active" au bouton cliqué
+        button.classList.add("active");
+
+        // Récupère l'ID de la catégorie (converti en nombre)
+        const categoryId = parseInt(button.dataset.id);
+
+        // Si ID = 0 → affiche tous les projets
+        if (categoryId === 0) {
+          displayGallery(works); // Appelle la fonction pour afficher tout
+        } else {
+          // Sinon → filtre les projets par catégorie
+          const filteredWorks = works.filter(work => work.category.id === categoryId);
+          displayGallery(filteredWorks); // Affiche seulement la catégorie
+        }
+      });
+    });
+  })
+  .catch(error => console.error("Erreur chargement filtres:", error));
 
   
   // PARTIE 4 : MODE ADMIN
@@ -253,14 +279,15 @@ document.addEventListener("DOMContentLoaded", () => {
 const addForm = document.getElementById("add-form");
 if (addForm) {
   addForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
+    e.preventDefault();  
 
     const token = localStorage.getItem("token");
     if (!token) {
       alert("Vous devez être connecté pour ajouter une photo.");
       return;
     }
-
+    
+    // filtres 
     const formData = new FormData();
     formData.append("image", imageInput.files[0]);
     formData.append("title", titleInput.value.trim());
